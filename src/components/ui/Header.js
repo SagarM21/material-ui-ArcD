@@ -127,13 +127,12 @@ const Header = (props) => {
 
 	const matches = useMediaQuery(theme.breakpoints.down("md"));
 	const [openDrawer, setOpenDrawer] = useState(false);
-	const [value, setValue] = useState(0);
+
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [openMenu, setOpenMenu] = useState(false);
-	const [selectedIndex, setSelectedIndex] = useState(0);
 
 	const handleChange = (e, newValue) => {
-		setValue(newValue);
+		props.setValue(newValue);
 	};
 
 	const handleClick = (event) => {
@@ -144,7 +143,7 @@ const Header = (props) => {
 	const handleMenuItemClick = (e, i) => {
 		setAnchorEl(null);
 		setOpenMenu(false);
-		setSelectedIndex(i);
+		props.setSelectedIndex(i);
 	};
 
 	const handleClose = (e) => {
@@ -193,15 +192,18 @@ const Header = (props) => {
 		[...menuOptions, ...routes].forEach((route) => {
 			switch (window.location.pathname) {
 				case `${route.link}`:
-					if (value !== route.activeIndex) {
-						setValue(route.activeIndex);
-						if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
-							setSelectedIndex(route.selectedIndex);
+					if (props.value !== route.activeIndex) {
+						props.setValue(route.activeIndex);
+						if (
+							route.selectedIndex &&
+							route.selectedIndex !== props.selectedIndex
+						) {
+							props.setSelectedIndex(route.selectedIndex);
 						}
 					}
 					break;
 				case "/estimate":
-					setValue(5);
+					props.setValue(5);
 					break;
 				default:
 					break;
@@ -212,7 +214,7 @@ const Header = (props) => {
 	const tabs = (
 		<React.Fragment>
 			<Tabs
-				value={value}
+				value={props.value}
 				onChange={handleChange}
 				indicatorColor='primary'
 				className={classes.tabContainer}
@@ -252,10 +254,10 @@ const Header = (props) => {
 						classes={{ root: classes.menuItem }}
 						onClick={(event) => {
 							handleMenuItemClick(event, i);
-							setValue(1);
+							props.setValue(1);
 							handleClose();
 						}}
-						selected={i === selectedIndex && value === 1}
+						selected={i === props.selectedIndex && props.value === 1}
 					>
 						{option.name}
 					</MenuItem>
@@ -280,14 +282,14 @@ const Header = (props) => {
 						<ListItem
 							onClick={() => {
 								setOpenDrawer(false);
-								setValue(route.activeIndex);
+								props.setValue(route.activeIndex);
 							}}
 							key={`${route}${route.activeIndex}`}
 							divider
 							button
 							component={Link}
 							to={route.link}
-							selected={value === route.activeIndex}
+							selected={props.value === route.activeIndex}
 							classes={{ selected: classes.drawerItemSelected }}
 						>
 							<ListItemText className={classes.drawerItem} disableTypography>
@@ -299,13 +301,13 @@ const Header = (props) => {
 					<ListItem
 						onClick={() => {
 							setOpenDrawer(false);
-							setValue(5);
+							props.setValue(5);
 						}}
 						divider
 						button
 						component={Link}
 						to='/estimate'
-						selected={value === 5}
+						selected={props.value === 5}
 						classes={{
 							root: classes.drawerItemEstimate,
 							selected: classes.drawerItemSelected,
@@ -337,7 +339,7 @@ const Header = (props) => {
 							to='/'
 							disableRipple
 							className={classes.logoContainer}
-							onClick={() => setValue(0)}
+							onClick={() => props.setValue(0)}
 						>
 							<img src={logo} alt='company logo' className={classes.logo} />
 						</Button>
