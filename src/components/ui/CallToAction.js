@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
 		backgroundImage: `url(${background})`,
 		backgroundPosition: "center",
 		backgroundSize: "cover",
-		backgroundAttachment: "fixed",
+		backgroundAttachment:
+			"fixed" /* used for keeping the image fixed and text will scroll*/,
 		backgroundRepeat: "no-repeat",
 		height: "60em",
 		width: "100%",

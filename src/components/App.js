@@ -1,7 +1,9 @@
 import { ThemeProvider } from "@material-ui/core/styles";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CustomSoftware from "./CustomSoftware";
 import LandingPage from "./LandingPage";
+import Services from "./Services";
 import Footer from "./ui/Footer";
 import Header from "./ui/Header";
 import theme from "./ui/Theme";
@@ -29,11 +31,25 @@ const App = () => {
 							/>
 						}
 					/>
-					<Route exact path='/services' element={<div>Services</div>} />
+					<Route
+						exact
+						path='/services'
+						element={
+							<Services
+								setValue={setValue}
+								setSelectedIndex={setSelectedIndex}
+							/>
+						}
+					/>
 					<Route
 						exact
 						path='/customsoftware'
-						element={<div>Custom Software</div>}
+						element={
+							<CustomSoftware
+								setValue={setValue}
+								setSelectedIndex={setSelectedIndex}
+							/>
+						}
 					/>
 					<Route exact path='/mobileapps' element={<div>Mobile Apps</div>} />
 					<Route exact path='/websites' element={<div>Websites</div>} />
