@@ -1,9 +1,11 @@
 import { ThemeProvider } from "@material-ui/core/styles";
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import About from "./About";
 import CustomSoftware from "./CustomSoftware";
 import LandingPage from "./LandingPage";
 import MobileApps from "./MobileApps";
+import Revolution from "./Revolution";
 import Services from "./Services";
 import Footer from "./ui/Footer";
 import Header from "./ui/Header";
@@ -73,8 +75,23 @@ const App = () => {
 							/>
 						}
 					/>
-					<Route exact path='/revolution' element={<div>Revolution</div>} />
-					<Route exact path='/about' element={<div>About</div>} />
+					<Route
+						exact
+						path='/revolution'
+						element={
+							<Revolution
+								setValue={setValue}
+								setSelectedIndex={setSelectedIndex}
+							/>
+						}
+					/>
+					<Route
+						exact
+						path='/about'
+						element={
+							<About setValue={setValue} setSelectedIndex={setSelectedIndex} />
+						}
+					/>
 					<Route exact path='/contact' element={<div>Contact</div>} />
 					<Route exact path='/estimate' element={<div>Estimate</div>} />
 				</Routes>
