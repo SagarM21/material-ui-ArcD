@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./About";
 import Contact from "./Contact";
 import CustomSoftware from "./CustomSoftware";
+import Estimate from "./Estimate";
 import LandingPage from "./LandingPage";
 import MobileApps from "./MobileApps";
 import Revolution from "./Revolution";
@@ -103,7 +104,16 @@ const App = () => {
 							/>
 						}
 					/>
-					<Route exact path='/estimate' element={<div>Estimate</div>} />
+					<Route
+						exact
+						path='/estimate'
+						element={
+							<Estimate
+								setValue={setValue}
+								setSelectedIndex={setSelectedIndex}
+							/>
+						}
+					/>
 				</Routes>
 				<Footer
 					value={value}

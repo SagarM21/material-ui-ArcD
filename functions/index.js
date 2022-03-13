@@ -477,9 +477,9 @@ exports.sendMail = functions.https.onRequest((request, response) => {
 													class="font11"
 												  >
 													<a
-													  href="mailto:zachary@gmail.com"
+													  href="mailto:sgr.mhshwr22@gmail.com"
 													  style="color:#ffffff; text-decoration:none!important"
-													  >zachary@gmail.com</a
+													  >sagar@gmail.com</a
 													>
 												  </td>
 												</tr>
